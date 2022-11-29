@@ -18,6 +18,7 @@ public class Application extends javafx.application.Application {
 //        stage.setScene(scene);
 //        stage.show();
 
+
         Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
