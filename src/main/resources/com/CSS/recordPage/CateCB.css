@@ -1,0 +1,41 @@
+* {
+    -fx-primary-color: #FD841F;
+    -fx-secondary-color: #FFE3CB;
+    -fx-light-grey-color: #FFF7E9;
+
+    -fx-focus-color: -fx-secondary-color;
+}
+
+.combo-box {
+    -fx-font-family: Arya;
+    -fx-background-radius: 5;
+}
+
+.combo-box-base {
+    -fx-background-color: -fx-light-grey-color;
+    -fx-background-radius: 5;
+}
+
+.combo-box:pressed {
+    -fx-background-color: #FD841F;
+    -fx-text-fill: White;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #000;
+}
+.combo-box-base .arrow-button .arrow {
+    -fx-font-size: 20px;
+    -fx-background-color: -fx-primary-color;
+}
+
+/* WHILE OPEN */
+.combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fx-light-grey-color;
+}
+.combo-box .combo-box-popup .list-view .list-cell:hover{
+    -fx-background-color: -fx-primary-color;
+}
+.combo-box .combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: -fx-secondary-color;
+}

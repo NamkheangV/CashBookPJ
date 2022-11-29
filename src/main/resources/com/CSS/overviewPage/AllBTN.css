@@ -1,0 +1,8 @@
+.button {
+    -fx-background-color: #FFE3CB;
+    -fx-background-radius: 40;
+}
+
+.button:focused {
+    -fx-background-color: #FD841F;
+}

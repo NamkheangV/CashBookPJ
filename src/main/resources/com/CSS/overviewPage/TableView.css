@@ -1,0 +1,32 @@
+* {
+    -fx-font-family: Arya;
+}
+
+.table-view {
+    -fx-background-radius: 5px;
+    -fx-background-color: #FFE3CB;
+}
+
+.table-view .column-header{
+    -fx-background-color: #FD841F;
+}
+
+#columnDate {
+    -fx-background-radius: 5 0 0 0;
+
+}
+
+#columnTotal {
+    -fx-background-radius: 0 5 0 0;
+}
+
+.table-view .column-header .filler {
+    -fx-size: 40;
+    -fx-border-width: 0 0 10 0;
+    -fx-border-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-font-size: 16px;
+}

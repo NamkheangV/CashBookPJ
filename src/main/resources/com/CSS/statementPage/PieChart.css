@@ -1,0 +1,19 @@
+* {
+    -fx-font-family: Arya;
+    -fx-legend-visible: true;
+}
+
+.chart {
+    -fx-legend-side: left;
+}
+
+.chart-legend {
+    -fx-background-color: #FFE3CB;
+    -fx-padding: 0 0 0 40;
+}
+
+.data0.chart-pie { -fx-pie-color: #3CCF4E; }
+.data1.chart-pie { -fx-pie-color: #FF1E00; }
+
+
+
