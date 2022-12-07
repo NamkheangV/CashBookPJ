@@ -11,8 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -48,7 +50,11 @@ public class MainController implements Initializable {
             System.out.print("Can't load");
         }
         bpMain.setCenter(root);
+
     }
+
+    @FXML
+    private Circle cirImage;
 
     @FXML
     private Label Name;

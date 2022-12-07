@@ -22,7 +22,7 @@
                   <Font name="Arya Regular" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="Income" layoutX="133.0" layoutY="35.0" text="Label" textFill="#009913">
+            <Label fx:id="Income" layoutX="126.0" layoutY="35.0" text="Label" textFill="#009913">
                <font>
                   <Font name="Arya Regular" size="18.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Font name="Arya Regular" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="Expenses" layoutX="134.0" layoutY="35.0" text="Label" textFill="#d82148">
+            <Label fx:id="Expenses" layoutX="130.0" layoutY="35.0" text="Label" textFill="#d82148">
                <font>
                   <Font name="Arya Regular" size="18.0" />
                </font>

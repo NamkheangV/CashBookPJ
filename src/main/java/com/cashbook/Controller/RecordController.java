@@ -99,7 +99,7 @@ public class RecordController implements Initializable {
 
     @FXML
     void onbtnExp(ActionEvent event) {
-        ObservableList<String> Expenses = FXCollections.observableArrayList("Food & Drink", "Transportation", "Dept", "Shopping" );
+        ObservableList<String> Expenses = FXCollections.observableArrayList("Food & Drink", "Transportation", "Dept", "Other." );
         cbCategory.setItems(Expenses);
         selectedType = "1";
     }

@@ -12,11 +12,11 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="430.0" style="-fx-background-radius: 10px; -fx-background-color: #10316B;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cashbook.Controller.LoginController">
    <children>
-      <Label layoutX="74.0" prefWidth="272.0" text="CB Project" textFill="WHITE">
+      <Label layoutX="65.0" layoutY="14.0" prefHeight="123.0" prefWidth="303.0" text="CASH BOOK" textFill="WHITE">
          <font>
             <Font name="Arya Bold" size="64.0" />
          </font></Label>
-      <Label fx:id="btnReg" layoutX="280.0" layoutY="127.0" onMouseClicked="#onbtnReg" text="Sign up!" textFill="#ef5b0c">
+      <Label fx:id="btnReg" layoutX="280.0" layoutY="124.0" onMouseClicked="#onbtnReg" text="Sign up!" textFill="#ef5b0c">
          <font>
             <Font name="Arya Bold" size="16.0" />
          </font></Label>
@@ -24,22 +24,22 @@
          <font>
             <Font name="Arya Regular" size="15.0" />
          </font></Label>
-      <Label layoutX="91.0" layoutY="127.0" text="Don't have an account yet?" textFill="WHITE">
+      <Label layoutX="91.0" layoutY="124.0" text="Don't have an account yet?" textFill="WHITE">
          <font>
             <Font name="Arya Regular" size="16.0" />
          </font></Label>
-      <Button fx:id="btnLogin" layoutX="76.0" layoutY="489.0" mnemonicParsing="false" onAction="#onbtnLogin" prefHeight="36.0" prefWidth="283.0" style="-fx-background-color: #EF5B0C; -fx-background-radius: 20;" text="Login" textFill="WHITE">
+      <Button fx:id="btnLogin" layoutX="76.0" layoutY="501.0" mnemonicParsing="false" onAction="#onbtnLogin" prefHeight="36.0" prefWidth="283.0" style="-fx-background-color: #EF5B0C; -fx-background-radius: 20;" text="Login" textFill="WHITE">
          <font>
             <Font name="Arya Bold" size="16.0" />
          </font></Button>
-      <PasswordField fx:id="txtPass" layoutX="76.0" layoutY="405.0" prefHeight="40.0" prefWidth="283.0">
+      <PasswordField fx:id="txtPass" layoutX="76.0" layoutY="407.0" prefHeight="40.0" prefWidth="283.0">
          <font>
             <Font name="Arya Regular" size="16.0" />
          </font>
          <padding>
             <Insets left="50.0" />
          </padding></PasswordField>
-      <TextField fx:id="txtID" layoutX="76.0" layoutY="331.0" prefHeight="40.0" prefWidth="283.0">
+      <TextField fx:id="txtID" layoutX="76.0" layoutY="323.0" prefHeight="40.0" prefWidth="283.0">
          <font>
             <Font name="Arya Regular" size="16.0" />
          </font>
@@ -53,12 +53,17 @@
       </Label>
       <Line endX="48.800018310546875" layoutX="131.0" layoutY="259.0" startX="-100.0" stroke="WHITE" />
       <Line endX="48.800018310546875" layoutX="354.0" layoutY="259.0" startX="-100.0" stroke="WHITE" />
-      <FontIcon iconLiteral="fas-key" iconSize="25" layoutX="84.0" layoutY="434.0" />
-      <FontIcon iconLiteral="fas-user-alt" iconSize="25" layoutX="84.0" layoutY="360.0" selectionEnd="0" text="" />
+      <FontIcon iconLiteral="fas-key" iconSize="25" layoutX="84.0" layoutY="436.0" />
+      <FontIcon iconLiteral="fas-user-alt" iconSize="25" layoutX="84.0" layoutY="352.0" selectionEnd="0" text="" />
       <Button fx:id="btnClose" layoutX="388.0" layoutY="14.0" mnemonicParsing="false" onAction="#onbtnClose" prefHeight="26.0" prefWidth="25.0" style="-fx-background-color: #10316B;">
          <graphic>
             <FontIcon iconColor="WHITE" iconLiteral="fas-times" iconSize="20" />
          </graphic>
       </Button>
+      <Label layoutX="142.0" layoutY="614.0" text="Create by NamkheangV 2022" textFill="WHITE">
+         <font>
+            <Font name="Arya Regular" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

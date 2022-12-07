@@ -14,6 +14,7 @@ import se.alipsa.ymp.YearMonthPickerCombo;
 
 import java.net.URL;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ResourceBundle;
@@ -28,8 +29,12 @@ public class StatementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String pattern = "#,###,###.##";
+        DecimalFormat df = new DecimalFormat(pattern);
+
         YearMonth selectedYearMonth = selectedMonth.getValue();
         System.out.println(selectedYearMonth);
+
         //subString to get the year and month
         String year = selectedYearMonth.toString().substring(0,4);
         String month = selectedYearMonth.toString().substring(5,7);
@@ -58,8 +63,8 @@ public class StatementController implements Initializable {
             pieChartData.add(new PieChart.Data("Income", totalInc));
             pieChartData.add(new PieChart.Data("Expenses", totalExp));
             pieChart.setData(pieChartData);
-            Expenses.setText(String.valueOf(totalExp));
-            Income.setText(String.valueOf(totalInc));
+            Expenses.setText(df.format(totalExp));
+            Income.setText(df.format(totalInc));
 
         } catch (Exception e){
             e.printStackTrace();
