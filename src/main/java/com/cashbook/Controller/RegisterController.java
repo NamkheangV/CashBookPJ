@@ -1,8 +1,10 @@
 package com.cashbook.Controller;
 
+import com.cashbook.Class.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,8 +16,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class RegisterController {
+public class RegisterController implements Initializable {
 
     @FXML
     private Button btnClose;
@@ -27,25 +32,22 @@ public class RegisterController {
     private Button btnSubmit;
 
     @FXML
-    private  TextField txtPass;
+    private TextField txtPass;
 
     @FXML
-    private TextField txtCon;
+    private TextField txtID;
 
     @FXML
     private Label txtError;
 
     @FXML
-    private TextField txtFname;
+    private TextField txtName;
 
     @FXML
-    private PasswordField txtID;
+    private PasswordField txtCon;
 
     @FXML
-    private PasswordField txtID1;
-
-    @FXML
-    private TextField txtLname;
+    private TextField txtBalance;
 
     @FXML
     void onbtnClose(ActionEvent event) {
@@ -63,41 +65,56 @@ public class RegisterController {
     }
 
     @FXML
-    void onbtnSubmit(ActionEvent event) throws IOException {
-        String Fname = txtFname.getText();
-        String Lname = txtLname.getText();
-        String ID = txtID.getText();
-        String Password = txtPass.getText();
-        String ConPass = txtCon.getText();
+    void onbtnSubmit(ActionEvent event) {
+        Database db = new Database();
 
-        System.out.println("Register success!");
-        Parent root = FXMLLoader.load(getClass().getResource("balance.fxml"));
-        Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
+        try {
+            String Name = txtName.getText();
+            String ID = txtID.getText();
+            String Password = txtPass.getText();
+            String ConPass = txtCon.getText();
+            String Balance = txtBalance.getText();
 
-        Stage popup = new Stage();
-        popup.initStyle(StageStyle.TRANSPARENT);
-        popup.setScene(scene);
-        popup.show();
+            String sql = String.format(
+                    "INSERT INTO `account`(`Acc_ID`, `Acc_Pass`, `Acc_Name`, Acc_Balance) VALUES ('%s','%s','%s','%s')",
+                    ID, Password, Name, Balance);
+            String sql2 = String.format("SELECT `Acc_ID` FROM `account` WHERE Acc_ID='%s';", ID);
 
+            ResultSet rs = db.getResultSet(sql2);
+            if (!rs.next()) {
+                if (Password.equals(ConPass)) {
+                    if (db.execute(sql)) {
+                        System.out.print("Login success");
+                        Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
+                        Scene scene = new Scene(root);
+                        scene.setFill(Color.TRANSPARENT);
+                        Stage stage = (Stage) btnSubmit.getScene().getWindow();
 
+                        stage.setScene(scene);
+                    } else
+                        txtError.setText("Something wrong!");
+                } else
+                    txtError.setText("Your ID do not match!");
+            } else if (rs.next()) {
+                txtError.setText("This ID is already used!");
+            }
 
+        } catch (Exception e) {
+            System.out.print("Error");
+        }
 
-
-//        popup.initStyle(StageStyle.TRANSPARENT);
-//        Label lb = new Label("Register success!");
-//        popup.showAndWait();
-//        popup.initStyle(StageStyle.TRANSPARENT);
-//        Label label1= new Label("Your balance");
-//        Button bl = new Button("Balance");
-//        TextField txtBl = new TextField();
-//        bl.setOnAction(e -> popup.close());
-//        VBox layout = new VBox(10);
-//        layout.getChildren().addAll(label1, bl);
-//        layout.setAlignment(Pos.CENTER);
-//        Scene scene1= new Scene(layout, 300, 250);
-//        popup.setScene(scene1);
-//        popup.showAndWait();
+        // Parent root = FXMLLoader.load(getClass().getResource("balance.fxml"));
+        // Scene scene = new Scene(root);
+        // scene.setFill(Color.TRANSPARENT);
+        //
+        // Stage popup = new Stage();
+        // popup.initStyle(StageStyle.TRANSPARENT);
+        // popup.setScene(scene);
+        // popup.show();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

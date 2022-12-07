@@ -30,3 +30,11 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-font-size: 16px;
 }
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #FFE3CB;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #FFF7E9;
+}

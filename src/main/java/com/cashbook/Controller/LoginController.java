@@ -1,6 +1,7 @@
 package com.cashbook.Controller;
 
-
+import com.cashbook.Class.Database;
+import com.cashbook.Class.currAccount;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.*;
 
 public class LoginController {
     @FXML
@@ -32,7 +34,6 @@ public class LoginController {
     @FXML
     private Label txtError;
 
-
     @FXML
     private PasswordField txtPass;
 
@@ -43,16 +44,17 @@ public class LoginController {
 
     @FXML
     public void onbtnLogin(ActionEvent event) {
-//        DB db = new DB();
+        Database db = new Database();
         try {
-            String acID = txtID.getText();
-            String acPass = txtPass.getText();
-            String sql = String.format("select permission from users where user_id='%s' and user_pass='%s'", acID, acPass);
+            String acc_ID = txtID.getText();
+            String acc_Pass = txtPass.getText();
+            String sql = String.format("SELECT `acc_ID`, `acc_Pass` FROM `account` WHERE acc_ID='%s' AND acc_Pass='%s'",
+                    acc_ID,
+                    acc_Pass);
+            ResultSet rs = db.getResultSet(sql);
 
-            if (acID.equals("")&&acPass.equals("")){
-                throw new IOException("Enter ID or Password!");
-            } else if (acID.equals("admin") && acPass.equals("admin")) {
-                System.out.println("Login success!");
+            if (rs.next()) {
+                currAccount.setAcc_ID(acc_ID);
 
                 Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
                 Scene scene = new Scene(root);
@@ -60,39 +62,24 @@ public class LoginController {
                 Stage stage = (Stage) btnLogin.getScene().getWindow();
                 stage.setScene(scene);
                 stage.centerOnScreen();
-//                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-//                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-//                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+            } else
+                throw new IOException("Wrong ID or Password!");
 
-            } else throw new IOException("Wrong ID or Password!");
+            // if (acc_ID.equals("") && acc_Pass.equals("")) {
+            // throw new IOException("Enter ID or Password!");
+            // } else if (acc_ID.equals("admin") && acc_Pass.equals("admin")) {
+            // System.out.println("Login success!");
+            // }
 
         } catch (IOException e) {
             txtError.setText(e.getMessage());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
-
-            //JOptionPane.showMessageDialog(null, sql);
-//            ResultSet rs = db.getResultSet(sql); //ตัวเก็บข้อมูลที่ได้จากการเลือกบน Database
-//            if (rs.next()) {
-//                if (rs.getString(1).equals("user")) {
-//                    UserCheckHour user = new UserCheckHour(get_current_id()); //โยนชื่อ Method เข้าไป
-//                    this.setVisible(false); //ซ่อนหน้าต่าง ข้อมูลไม่หาย
-//                    user.setVisible(true);
-//                }else {
-//                    AdCheckHour admin01 = new AdCheckHour(get_current_id()); //ดึงไอดีที่ใส่เข้ามา
-//                    this.setVisible(false);
-//                    admin01.setVisible(true);
-//                }
-//            }
-//            else throw new Exception("Fail");
-//        }
-//        catch(Exception e) {
-//            txtError.setText("Wrong ID or Password!");
-//        }
     }
 
     @FXML
-    public void onbtnReg(MouseEvent event) throws IOException{
+    public void onbtnReg(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("registerPage.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
@@ -101,8 +88,4 @@ public class LoginController {
         stage.setScene(scene);
     }
 
-//    @FXML
-//    private void hanbleClose(ActionEvent event) {
-//
-//    }
 }

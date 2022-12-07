@@ -12,13 +12,6 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(CashBookApp.class.getResource("loginPage.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("CASH BOOK PROJECT");
-//        stage.setScene(scene);
-//        stage.show();
-
-
         Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);

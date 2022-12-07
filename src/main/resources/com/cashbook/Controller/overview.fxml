@@ -14,7 +14,7 @@
    <children>
       <Pane layoutX="72.0" layoutY="51.0" prefHeight="122.0" prefWidth="612.0" style="-fx-background-color: #FFE3CB; -fx-background-radius: 10px;">
          <children>
-            <Label layoutX="64.0" layoutY="18.0" text="Balance   :">
+            <Label layoutX="144.0" layoutY="14.0" text="Balance   :">
                <font>
                   <Font name="Arya Regular" size="24.0" />
                </font>
@@ -24,34 +24,39 @@
                   <Font name="Arya Regular" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="187.0" layoutY="18.0">
+            <Label fx:id="Balance" alignment="TOP_RIGHT" layoutX="263.0" layoutY="14.0" prefHeight="47.0" prefWidth="121.0" text="0.00">
                <font>
                   <Font name="Arya Regular" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="347.0" layoutY="73.0" text="Time   :">
+            <Label layoutX="338.0" layoutY="73.0" text="Time   :">
                <font>
                   <Font name="Arya Regular" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="195.0" layoutY="73.0" text="10-12-2022">
+            <Label fx:id="Date" layoutX="195.0" layoutY="73.0" text="00-00-00">
                <font>
                   <Font name="Arya Regular" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="402.0" layoutY="73.0" text="10 : 32">
+            <Label fx:id="Time" layoutX="393.0" layoutY="73.0" text="00.00.00">
                <font>
                   <Font name="Arya Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="399.0" layoutY="14.0" text="Baht">
+               <font>
+                  <Font name="Arya Regular" size="24.0" />
                </font>
             </Label>
          </children></Pane>
-      <TableView layoutX="32.0" layoutY="279.0" prefHeight="350.0" prefWidth="692.0" style="-fx-background-radius: 5;" stylesheets="@../CSS/overviewPage/TableView.css">
+      <TableView fx:id="tsTable" layoutX="32.0" layoutY="279.0" prefHeight="350.0" prefWidth="692.0" style="-fx-background-radius: 5;" stylesheets="@../CSS/overviewPage/TableView.css">
          <columns>
-            <TableColumn id="columnDate" prefWidth="98.0" text="Date" />
-            <TableColumn prefWidth="239.6" text="Name List" />
-            <TableColumn prefWidth="120.0" text="Income" />
-            <TableColumn prefWidth="120.0" text="Expenses" />
-            <TableColumn id="columnTotal" prefWidth="110.0" text="Total" />
+            <TableColumn id="columnDate" fx:id="colDate" prefWidth="98.0" text="Date" />
+            <TableColumn fx:id="colCategory" editable="false" prefWidth="140.0" sortable="false" text="Category" />
+            <TableColumn fx:id="colList" editable="false" prefWidth="210.0" sortable="false" text="Description" />
+            <TableColumn fx:id="colIncome" editable="false" prefWidth="120.0" sortable="false" text="Income" />
+            <TableColumn id="columnTotal" fx:id="colExpenses" editable="false" prefWidth="120.0" sortable="false" text="Expenses" />
          </columns>
       </TableView>
       <HBox layoutX="108.0" layoutY="191.0" prefHeight="70.0" prefWidth="520.0" style="-fx-background-color: #FFE3CB; -fx-background-radius: 40;">

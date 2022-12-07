@@ -2,18 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import se.alipsa.ymp.YearMonthPickerCombo?>
 
 <AnchorPane prefHeight="650.0" prefWidth="755.0" style="-fx-background-color: #FFF7E9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cashbook.Controller.StatementController">
    <children>
-      <ComboBox fx:id="cbMonth" layoutX="102.0" layoutY="44.0" prefHeight="42.0" prefWidth="177.0" promptText="Select month" stylesheets="@../CSS/statementPage/MonthCB.css">
-         <padding>
-            <Insets left="30.0" />
-         </padding></ComboBox>
       <Pane layoutX="57.0" layoutY="104.0" prefHeight="378.0" prefWidth="666.0" style="-fx-background-color: #FFE3CB; -fx-background-radius: 5;">
          <children>
             <PieChart fx:id="pieChart" prefHeight="378.0" prefWidth="666.0" stylesheets="@../CSS/statementPage/PieChart.css" />
@@ -26,7 +22,7 @@
                   <Font name="Arya Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="134.0" layoutY="32.0" text="Label" textFill="#009913">
+            <Label fx:id="Income" layoutX="133.0" layoutY="35.0" text="Label" textFill="#009913">
                <font>
                   <Font name="Arya Regular" size="18.0" />
                </font>
@@ -45,7 +41,7 @@
                   <Font name="Arya Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="134.0" layoutY="35.0" text="Label" textFill="#d82148">
+            <Label fx:id="Expenses" layoutX="134.0" layoutY="35.0" text="Label" textFill="#d82148">
                <font>
                   <Font name="Arya Regular" size="18.0" />
                </font>
@@ -57,5 +53,10 @@
             </Label>
          </children>
       </Pane>
+      <YearMonthPickerCombo fx:id="selectedMonth" layoutX="506.0" layoutY="44.0" onAction="#onSelectedMonth" prefHeight="42.0" prefWidth="159.0" stylesheets="@../CSS/statementPage/MonthCB.css">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </YearMonthPickerCombo>
    </children>
 </AnchorPane>

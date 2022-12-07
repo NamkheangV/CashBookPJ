@@ -1,91 +1,69 @@
-//package com.cashbook.Class;
-//import java.sql.*;
-//
-//public class Database {
-//
-//    // <editor-fold defaultstate="collapsed" desc="Database Connection">
-//    // ----------------สร้าง Object ที่ใช้กับ Database---------------------
-//    private Connection conn = null;
-//    private Statement st = null;
-//    private ResultSet rs = null;
-//    // ---------------------------------------------------------------
-//    // ----------------URL สำหรับเชื่อมฐานข้อมูลบน Server-------------------
-//    private String url = "jdbc:mysql://localhost:3306/cashbookr";
-//    // ---------------------------------------------------------------
-//    //----------------------User ที่ใช้ Database-------------------------
-//    private String username = "root";
-//    private String password = "";
-//    // ---------------------------------------------------------------
-//    // </editor-fold>
-//
-//
-//    // -------Method for connect Database--------
-//    public void connectDB() throws SQLException {
-//        try{
-//            conn = DriverManager.getConnection(url,username,password);
-////            System.out.println("Connected to Database");
-//        }catch (SQLException ex){
-//            System.out.println(ex.getMessage());
-//            myAlert alert = new myAlert();
-//            alert.showErrorAlert("Can't connect to Database");
-//        }
-//    }
-//    // ----------------------------------------------
-//
-//    // -------Method for get connection Database--------
-//    public Connection getConnection() throws SQLException {
-//        connectDB();
-//        return conn;
-//    }
-//
-//
-//    // ------Method for disconnect database--------
-//    public void disconnect() throws SQLException {
-//        try {
-//            conn.close();
-//        }catch (SQLException ex){
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-//    // -----------------------------------------------
-//
-//    // -----------Method for execute Sql-----------------
-//    public boolean execute (String query) throws SQLException {
-//        boolean rs;
-//        try{
-//            connectDB();
-//            st = conn.createStatement();
-//            st.execute(query);
-//            rs = true;
-//            disconnect();
-////            System.out.println("Execute Success");
-//        }catch (SQLException ex){
-//            rs = false;
-//            System.out.println(ex.getMessage());
-//        }
-//        return rs;
-//    }
-//    // ------------------------------------------------------------
-//
-//    // ----------Method get ResultSet from execute-------------
-//    public ResultSet getResultSet (String query) throws SQLException {
-//        try{
-//            connectDB();
-//            st = conn.createStatement();
-//            rs = st.executeQuery(query);
-////            System.out.println("Get ResultSet Success");
-//        }catch (SQLException ex){
-//            rs = null;
-//            System.out.println(ex.getMessage());
-//        }
-//        return rs;
-//    }
-//    // ---------------------------------------------------------------------
-//
-//
-//    public Statement getSt() throws SQLException {
-//        connectDB();
-//        st = conn.createStatement();
-//        return st;
-//    }
-//}
+package com.cashbook.Class;
+import java.sql.*;
+
+
+public class Database {
+
+    private Connection con = null;
+    private Statement st = null;
+    private ResultSet rs = null;
+    private String url = "jdbc:mysql://localhost:3306/cashbook";
+    private String username = "root";
+    private String password = "";
+
+    public void connectDB()throws SQLException {
+        try{
+            con = DriverManager.getConnection(url,username,password);
+        }
+        catch(Exception e){
+
+        }
+    }
+
+    public void DisconnectDB()throws SQLException {
+        try{
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println("Error");
+        }
+    }
+
+    public boolean execute(String SQL)throws SQLException {
+        try{
+            connectDB();
+            st = con.createStatement();
+            st.execute(SQL);
+            DisconnectDB();
+            return true;
+        }
+        catch(Exception e){
+            System.out.print(e.getMessage());
+            return false;
+        }
+
+    }
+
+    public ResultSet getResultSet(String SQL)throws SQLException {
+        try{
+            connectDB();
+            st = con.createStatement();
+            rs = st.executeQuery(SQL);
+            return rs;
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+
+    public ResultSet execQuery(String sql) {
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        return rs;
+    }
+}

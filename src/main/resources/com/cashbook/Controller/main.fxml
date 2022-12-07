@@ -15,7 +15,7 @@
          <children>
             <Pane prefHeight="153.0" prefWidth="246.0">
                <children>
-                  <Label layoutX="97.0" layoutY="45.0" prefHeight="39.0" prefWidth="141.0" text="Suchanart Khumbungkhla" textFill="WHITE">
+                  <Label fx:id="Name" layoutX="97.0" layoutY="45.0" prefHeight="39.0" prefWidth="141.0" text="Name for Test" textFill="WHITE">
                      <font>
                         <Font name="Arya Regular" size="20.0" />
                      </font>

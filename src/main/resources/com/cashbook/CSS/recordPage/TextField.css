@@ -1,4 +1,4 @@
-* {
+/* * {
     -fx-primary-color: #FD841F;
     -fx-secondary-color: #FFE3CB;
     -fx-light-grey-color: #FFF7E9;
@@ -7,21 +7,36 @@
 
     -fx-font-family: Arya;
     -fx-background-radius: 5;
-}
-
-.text-area {
+} */
+/* .text-area {
     -fx-background-color: -fx-secondary-color;
     -fx-background-radius: 5;
 
-    /* Shadow effect */
-    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 5.0, 5.0);*/
-}
-.text-area .content {
+    Shadow effect 
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 5.0, 5.0);
+} */
+/* .text-area .content {
     -fx-background-color: -fx-light-grey-color;
     -fx-background-radius: 5;
     -fx-padding: 20 0 0 15;
+} */
+/* .text-area:focused .content {
+   -fx-background-color: -fx-light-grey-color;
+    -fx-background-radius: 5;
+} */
+
+.text-area {
+    -fx-background-color: #FFF7E9;
 }
-/*.text-area:focused .content {*/
-/*    -fx-background-color: -fx-light-grey-color;*/
-/*    -fx-background-radius: 5;*/
-/*}*/
+
+.text-area .content {
+    -fx-background-color: #FFF7E9;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #FFF7E9;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
