@@ -95,7 +95,7 @@ public class RegisterController implements Initializable {
                         txtError.setText("Something wrong!");
                 } else
                     txtError.setText("Your ID do not match!");
-            } else if (rs.next()) {
+            } else {
                 txtError.setText("This ID is already used!");
             }
 

@@ -33,7 +33,7 @@ public class StatementController implements Initializable {
         DecimalFormat df = new DecimalFormat(pattern);
 
         YearMonth selectedYearMonth = selectedMonth.getValue();
-        System.out.println(selectedYearMonth);
+//        System.out.println(selectedYearMonth);
 
         //subString to get the year and month
         String year = selectedYearMonth.toString().substring(0,4);
@@ -45,9 +45,9 @@ public class StatementController implements Initializable {
         try {
             //query by month
             String sql = String.format("SELECT `Amount`, `Type_ID` FROM `transaction` WHERE acc_ID = '%s' AND TS_Date LIKE '%s'", curr_acc, date);
-            System.out.println(sql);
+//            System.out.println(sql);
             ResultSet rs = db.getResultSet(sql);
-            System.out.println(rs);
+//            System.out.println(rs);
 
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -59,7 +59,7 @@ public class StatementController implements Initializable {
                     totalExp += Integer.parseInt(rs.getString(1));
                 }
             }
-            System.out.println(totalExp+" "+totalInc);
+//            System.out.println(totalExp+" "+totalInc);
             pieChartData.add(new PieChart.Data("Income", totalInc));
             pieChartData.add(new PieChart.Data("Expenses", totalExp));
             pieChart.setData(pieChartData);
